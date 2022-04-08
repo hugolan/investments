@@ -1,3 +1,3 @@
 # investments
 
-Repo for financial investments repo
+Repo for financial investments
