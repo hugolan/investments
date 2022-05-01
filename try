@@ -1,0 +1,537 @@
+[1mdiff --git a/Untitled Folder/.ipynb_checkpoints/ex2-checkpoint.ipynb b/Untitled Folder/.ipynb_checkpoints/ex2-checkpoint.ipynb[m
+[1mdeleted file mode 100644[m
+[1mindex 1ee71a7..0000000[m
+[1m--- a/Untitled Folder/.ipynb_checkpoints/ex2-checkpoint.ipynb[m	
+[1m+++ /dev/null[m
+[36m@@ -1,488 +0,0 @@[m
+[31m-{[m
+[31m- "cells": [[m
+[31m-  {[m
+[31m-   "cell_type": "code",[m
+[31m-   "execution_count": 208,[m
+[31m-   "id": "bc734cc1",[m
+[31m-   "metadata": {[m
+[31m-    "scrolled": true[m
+[31m-   },[m
+[31m-   "outputs": [[m
+[31m-    {[m
+[31m-     "name": "stdout",[m
+[31m-     "output_type": "stream",[m
+[31m-     "text": [[m
+[31m-      "Loading library list...\n",[m
+[31m-      "Done\n"[m
+[31m-     ][m
+[31m-    }[m
+[31m-   ],[m
+[31m-   "source": [[m
+[31m-    "import pandas as pd\n",[m
+[31m-    "import numpy as np\n",[m
+[31m-    "import wrds\n",[m
+[31m-    "db=wrds.Connection(wrds_username='hlanfran')\n",[m
+[31m-    "from datetime import datetime"[m
+[31m-   ][m
+[31m-  },[m
+[31m-  {[m
+[31m-   "cell_type": "markdown",[m
+[31m-   "id": "d83a686c",[m
+[31m-   "metadata": {},[m
+[31m-   "source": [[m
+[31m-    "### b"[m
+[31m-   ][m
+[31m-  },[m
+[31m-  {[m
+[31m-   "cell_type": "markdown",[m
+[31m-   "id": "d9410d8e",[m
+[31m-   "metadata": {},[m
+[31m-   "source": [[m
+[31m-    "### c"[m
+[31m-   ][m
+[31m-  },[m
+[31m-  {[m
+[31m-   "cell_type": "markdown",[m
+[31m-   "id": "11bc67c5",[m
+[31m-   "metadata": {},[m
+[31m-   "source": [[m
+[31m-    "### d"[m
+[31m-   ][m
+[31m-  },[m
+[31m-  {[m
+[31m-   "cell_type": "code",[m
+[31m-   "execution_count": 213,[m
+[31m-   "id": "c8e42a00",[m
+[31m-   "metadata": {[m
+[31m-    "scrolled": true[m
+[31m-   },[m
+[31m-   "outputs": [[m
+[31m-    {[m
+[31m-     "data": {[m
+[31m-      "text/html": [[m
+[31m-       "<div>\n",[m
+[31m-       "<style scoped>\n",[m
+[31m-       "    .dataframe tbody tr th:only-of-type {\n",[m
+[31m-       "        vertical-align: middle;\n",[m
+[31m-       "    }\n",[m
+[31m-       "\n",[m
+[31m-       "    .dataframe tbody tr th {\n",[m
+[31m-       "        vertical-align: top;\n",[m
+[31m-       "    }\n",[m
+[31m-       "\n",[m
+[31m-       "    .dataframe thead th {\n",[m
+[31m-       "        text-align: right;\n",[m
+[31m-       "    }\n",[m
+[31m-       "</style>\n",[m
+[31m-       "<table border=\"1\" class=\"dataframe\">\n",[m
+[31m-       "  <thead>\n",[m
+[31m-       "    <tr style=\"text-align: right;\">\n",[m
+[31m-       "      <th></th>\n",[m
+[31m-       "      <th>tmytm</th>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>mcaldt</th>\n",[m
+[31m-       "      <th></th>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "  </thead>\n",[m
+[31m-       "  <tbody>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>1978-01-31</th>\n",[m
+[31m-       "      <td>0.005010</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>1978-02-28</th>\n",[m
+[31m-       "      <td>0.005087</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>1978-03-31</th>\n",[m
+[31m-       "      <td>0.005429</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>1978-04-28</th>\n",[m
+[31m-       "      <td>0.005053</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>1978-05-31</th>\n",[m
+[31m-       "      <td>0.005440</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>...</th>\n",[m
+[31m-       "      <td>...</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>2021-08-31</th>\n",[m
+[31m-       "      <td>0.000034</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>2021-09-30</th>\n",[m
+[31m-       "      <td>0.000038</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>2021-10-29</th>\n",[m
+[31m-       "      <td>0.000042</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>2021-11-30</th>\n",[m
+[31m-       "      <td>0.000068</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>2021-12-31</th>\n",[m
+[31m-       "      <td>0.000042</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "  </tbody>\n",[m
+[31m-       "</table>\n",[m
+[31m-       "<p>528 rows × 1 columns</p>\n",[m
+[31m-       "</div>"[m
+[31m-      ],[m
+[31m-      "text/plain": [[m
+[31m-       "               tmytm\n",[m
+[31m-       "mcaldt              \n",[m
+[31m-       "1978-01-31  0.005010\n",[m
+[31m-       "1978-02-28  0.005087\n",[m
+[31m-       "1978-03-31  0.005429\n",[m
+[31m-       "1978-04-28  0.005053\n",[m
+[31m-       "1978-05-31  0.005440\n",[m
+[31m-       "...              ...\n",[m
+[31m-       "2021-08-31  0.000034\n",[m
+[31m-       "2021-09-30  0.000038\n",[m
+[31m-       "2021-10-29  0.000042\n",[m
+[31m-       "2021-11-30  0.000068\n",[m
+[31m-       "2021-12-31  0.000042\n",[m
+[31m-       "\n",[m
+[31m-       "[528 rows x 1 columns]"[m
+[31m-      ][m
+[31m-     },[m
+[31m-     "execution_count": 213,[m
+[31m-     "metadata": {},[m
+[31m-     "output_type": "execute_result"[m
+[31m-    }[m
+[31m-   ],[m
+[31m-   "source": [[m
+[31m-    "data = db.raw_sql(\"select mcaldt, tmytm from crsp.tfz_mth_rf where kytreasnox = 2000001 and mcaldt>='1978-01-01' and mcaldt<='2021-12-31'\")\n",[m
+[31m-    "data.to_csv('data.csv', sep=';', index=False)\n",[m
+[31m-    "# rename\n",[m
+[31m-    "data_rf = pd.read_csv(\"data.csv\", sep=';')\n",[m
+[31m-    "data_rf[\"tmytm\"] = np.exp(data_rf['tmytm']/12/100)-1\n",[m
+[31m-    "data_rf = data_rf.set_index(\"mcaldt\")\n",[m
+[31m-    "data_rf"[m
+[31m-   ][m
+[31m-  },[m
+[31m-  {[m
+[31m-   "cell_type": "code",[m
+[31m-   "execution_count": 24,[m
+[31m-   "id": "24bfbecb",[m
+[31m-   "metadata": {[m
+[31m-    "scrolled": true[m
+[31m-   },[m
+[31m-   "outputs": [[m
+[31m-    {[m
+[31m-     "data": {[m
+[31m-      "text/html": [[m
+[31m-       "<div>\n",[m
+[31m-       "<style scoped>\n",[m
+[31m-       "    .dataframe tbody tr th:only-of-type {\n",[m
+[31m-       "        vertical-align: middle;\n",[m
+[31m-       "    }\n",[m
+[31m-       "\n",[m
+[31m-       "    .dataframe tbody tr th {\n",[m
+[31m-       "        vertical-align: top;\n",[m
+[31m-       "    }\n",[m
+[31m-       "\n",[m
+[31m-       "    .dataframe thead th {\n",[m
+[31m-       "        text-align: right;\n",[m
+[31m-       "    }\n",[m
+[31m-       "</style>\n",[m
+[31m-       "<table border=\"1\" class=\"dataframe\">\n",[m
+[31m-       "  <thead>\n",[m
+[31m-       "    <tr style=\"text-align: right;\">\n",[m
+[31m-       "      <th></th>\n",[m
+[31m-       "      <th>stock</th>\n",[m
+[31m-       "      <th>date</th>\n",[m
+[31m-       "      <th>ret</th>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "  </thead>\n",[m
+[31m-       "  <tbody>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>0</th>\n",[m
+[31m-       "      <td>AMERICAN EXPRESS CO</td>\n",[m
+[31m-       "      <td>1978-01-31</td>\n",[m
+[31m-       "      <td>-0.040268</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>1</th>\n",[m
+[31m-       "      <td>AMERICAN EXPRESS CO</td>\n",[m
+[31m-       "      <td>1978-02-28</td>\n",[m
+[31m-       "      <td>0.003497</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>2</th>\n",[m
+[31m-       "      <td>AMERICAN EXPRESS CO</td>\n",[m
+[31m-       "      <td>1978-03-31</td>\n",[m
+[31m-       "      <td>0.067875</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>3</th>\n",[m
+[31m-       "      <td>AMERICAN EXPRESS CO</td>\n",[m
+[31m-       "      <td>1978-04-28</td>\n",[m
+[31m-       "      <td>0.115512</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>4</th>\n",[m
+[31m-       "      <td>AMERICAN EXPRESS CO</td>\n",[m
+[31m-       "      <td>1978-05-31</td>\n",[m
+[31m-       "      <td>0.008876</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>...</th>\n",[m
+[31m-       "      <td>...</td>\n",[m
+[31m-       "      <td>...</td>\n",[m
+[31m-       "      <td>...</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>10555</th>\n",[m
+[31m-       "      <td>EXXON MOBIL CORP</td>\n",[m
+[31m-       "      <td>2021-08-31</td>\n",[m
+[31m-       "      <td>0.072455</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>10556</th>\n",[m
+[31m-       "      <td>EXXON MOBIL CORP</td>\n",[m
+[31m-       "      <td>2021-09-30</td>\n",[m
+[31m-       "      <td>-0.042702</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>10557</th>\n",[m
+[31m-       "      <td>EXXON MOBIL CORP</td>\n",[m
+[31m-       "      <td>2021-10-29</td>\n",[m
+[31m-       "      <td>0.058351</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>10558</th>\n",[m
+[31m-       "      <td>EXXON MOBIL CORP</td>\n",[m
+[31m-       "      <td>2021-11-30</td>\n",[m
+[31m-       "      <td>-0.086586</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "    <tr>\n",[m
+[31m-       "      <th>10559</th>\n",[m
+[31m-       "      <td>EXXON MOBIL CORP</td>\n",[m
+[31m-       "      <td>2021-12-31</td>\n",[m
+[31m-       "      <td>0.070500</td>\n",[m
+[31m-       "    </tr>\n",[m
+[31m-       "  </tbody>\n",[m
+[31m-       "</table>\n",[m
+[31m-       "<p>10560 rows × 3 columns</p>\n",[m
+[31m-       "</div>"[m
+[31m-      ],[m
+[31m-      "text/plain": [[m
+[31m-       "                     stock        date       ret\n",[m
+[31m-       "0      AMERICAN EXPRESS CO  1978-01-31 -0.040268\n",[m
+[31m-       "1      AMERICAN EXPRESS CO  1978-02-28  0.003497\n",[m
+[31m-       "2      AMERICAN EXPRESS CO  1978-03-31  0.067875\n",[m
+[31m-       "3      AMERICAN EXPRESS CO  1978-04-28  0.115512\n",[m
+[31m-       "4      AMERICAN EXPRESS CO  1978-05-31  0.008876\n",[m
+[31m-       "...                    ...         ...       ...\n",[m
+[31m-       "10555     EXXON MOBIL CORP  2021-08-31  0.072455\n",[m
+[31m-       "10556     EXXON MOBIL CORP  2021-09-30 -0.042702\n",[m
+[31m-       "10557     EXXON MOBIL CORP  2021-10-29  0.058351\n",[m
+[31m-       "10558     EXXON MOBIL CORP  2021-11-30 -0.086586\n",[m
+[31m-       "10559     EXXON MOBIL CORP  2021-12-31  0.070500\n",[m
+[31m-       "\n",[m
+[31m-       "[10560 rows x 3 columns]"[m
+[31m-      ][m
+[31m-     },[m
+[31m-     "execution_count": 24,[m
+[31m-     "metadata": {},[m
+[31m-     "output_type": "execute_result"[m
+[31m-    }[m
+[31m-   ],[m
+[31m-   "source": [[m
+[31m-    "data_company = db.raw_sql(\"select  permno, date,ret \"\n",[m
+[31m-    "           \"from crsp.msf \"\n",[m
+[31m-    "           \"where permno in (11308, 11850, 12490, 14541, 17830, 18163, 18542, 19502, 19561, 21936, 22111, 22592, 22752, 26403, 43449, 47896, 55976, 59176, 59328, 59459) \"\n",[m
+[31m-    "           \"and date>='1978-01-01'\"\n",[m
+[31m-    "            \"and date<='2021-12-31'\")\n",[m
+[31m-    "data_company.to_csv('data_company.csv', sep=';', index=False)\n",[m
+[31m-    "# rename\n",[m
+[31m-    "data_company = pd.read_csv(\"data_company.csv\", sep=';')   \n",[m
+[31m-    "\n",[m
+[31m-    "\n",[m
+[31m-    "data_company.loc[data_company.permno ==11308,'permno'] = 'AMERICAN EXPRESS CO'\n",[m
+[31m-    "data_company.loc[data_company.permno ==11850,'permno'] = 'BOEING CO’'\n",[m
+[31m-    "data_company.loc[data_company.permno ==12490,'permno'] = 'CATERPILLAR TRACTOR INC'\n",[m
+[31m-    "data_company.loc[data_company.permno ==14541,'permno'] = 'CHEVRON CORP NEW'\n",[m
+[31m-    "data_company.loc[data_company.permno ==17830,'permno'] = 'DISNEY WALT PRODUCTIONS'\n",[m
+[31m-    "data_company.loc[data_company.permno ==18163,'permno'] = 'INTERNATIONAL BUSINESS MACHS CO'\n",[m
+[31m-    "data_company.loc[data_company.permno ==18542,'permno'] = 'INTEL CORP'\n",[m
+[31m-    "data_company.loc[data_company.permno ==19502,'permno'] = 'JOHNSON & JOHNSON'\n",[m
+[31m-    "data_company.loc[data_company.permno ==19561,'permno'] = 'JPMORGAN CHASE & CO'\n",[m
+[31m-    "data_company.loc[data_company.permno ==21936,'permno'] = 'COCA COLA CO'\n",[m
+[31m-    "data_company.loc[data_company.permno ==22111,'permno'] = 'MCDONALDS CORP'\n",[m
+[31m-    "data_company.loc[data_company.permno ==22592,'permno'] = '3M CO'\n",[m
+[31m-    "data_company.loc[data_company.permno ==22752,'permno'] = 'MERCK & CO INC'\n",[m
+[31m-    "data_company.loc[data_company.permno ==26403,'permno'] = 'PFIZER INC'\n",[m
+[31m-    "data_company.loc[data_company.permno ==43449,'permno'] = 'PROCTER & GAMBLE CO'\n",[m
+[31m-    "data_company.loc[data_company.permno ==47896,'permno'] = 'TRAVELERS COMPANIES INC'\n",[m
+[31m-    "data_company.loc[data_company.permno ==55976,'permno'] = 'UNITED TECHNOLOGIES CORP'\n",[m
+[31m-    "data_company.loc[data_company.permno ==59176,'permno'] = 'WALGREENS BOOTS ALLIANCE INC'\n",[m
+[31m-    "data_company.loc[data_company.permno ==59328,'permno'] = 'WALMART INC'\n",[m
+[31m-    "data_company.loc[data_company.permno ==59459,'permno'] = 'EXXON MOBIL CORP'\n",[m
+[31m-    "\n",[m
+[31m-    "\n",[m
+[31m-    "data_company = data_company.rename(columns={'permno':'stock'})\n",[m
+[31m-    "data_company"[m
+[31m-   ][m
+[31m-  },[m
+[31m-  {[m
+[31m-   "cell_type": "code",[m
+[31m-   "execution_count": 195,[m
+[31m-   "id": "15c8a420",[m
+[31m-   "metadata": {},[m
+[31m-   "outputs": [],[m
+[31m-   "source": [[m
+[31m-    "ret = data_company.groupby(\"date\")[\"ret\"].apply(list).reset_index()\n",[m
+[31m-    "name = data_company.groupby(\"date\")[\"stock\"].apply(list).reset_index()\n",[m
+[31m-    "d = ret.merge(name,on=\"date\")"[m
+[31m-   ][m
+[31m-  },[m
+[31m-  {[m
+[31m-   "cell_type": "code",[m
+[31m-   "execution_count": 196,[m
+[31m-   "id": "4e026fe9",[m
+[31m-   "metadata": {},[m
+[31m-   "outputs": [],[m
+[31m-   "source": [[m
+[31m-    "all_data = pd.DataFrame(d.date)\n",[m
+[31m-    "#for col in d.stock[0]:\n",[m
+[31m-    "#    all_data[col] = 0\n",[m
+[31m-    "for row in d.iterrows():\n",[m
+[31m-    "    for i in range(len(row[1][2])):\n",[m
+[31m-    "        all_data.loc[row[0],row[1][2][i]] = row[1][1][i]"[m
+[31m-   ][m
+[31m-  },[m
+[31m-  {[m
+[31m-   "cell_type": "code",[m
+[31m-   "execution_count": 198,[m
+[31m-   "id": "53f42fc3",[m
+[31m-   "metadata": {},[m
+[31m-   "outputs": [],[m
+[31m-   "source": [[m
+[31m-    "#portofolios in different timeframes\n",[m
+[31m-    "dates = all_data.date\n",[m
+[31m-    "all_data = all_data.set_index(['date'])\n",[m
+[31m-    "means = all_data.rolling(window=120,min_periods=120).mean()\n",[m
+[31m-    "stds = all_data.rolling(window=120,min_periods=120).std()\n",[m
+[31m-    "covs = all_data.rolling(window=120,min_periods=120).cov()\n",[m
+[31m-    "means_rf = data_rf.rolling(window=120,min_periods=120).mean()"[m
+[31m-   ][m
+[31m-  },[m
+[31m-  {[m
+[31m-   "cell_type": "code",[m
+[31m-   "execution_count": 219,[m
+[31m-   "id": "9db3bd82",[m
+[31m-   "metadata": {[m
+[31m-    "scrolled": true[m
+[31m-   },[m
+[31m-   "outputs": [],[m
+[31m-   "source": [[m
+[31m-    "#define constrains for the 20 stocks\n",[m
+[31m-    "one = np.ones(20)\n",[m
+[31m-    "w = np.zeros((np.shape(dates[119:])[0], 4, 20))"[m
+[31m-   ][m
+[31m-  },[m
+[31m-  {[m
+[31m-   "cell_type": "code",[m
+[31m-   "execution_count": 228,[m
+[31m-   "id": "7b9b3de1",[m
+[31m-   "metadata": {},[m
+[31m-   "outputs": [],[m
+[31m-   "source": [[m
+[31m-    "date_number=0\n",[m
+[31m-    "for d in dates[119:]:\n",[m
+[31m-    "    mu = means.loc[d].values.T\n",[m
+[31m-    "    std = stds.loc[d].values\n",[m
+[31m-    "    sigma = covs.loc[d].values\n",[m
+[31m-    "    sigma_inverted = np.linalg.inv(sigma)\n",[m
+[31m-    "    rf = data_rf.loc[d].values\n",[m
+[31m-    "\n",[m
+[31m-    "    A = (one@sigma_inverted)@one\n",[m
+[31m-    "    B = (one@sigma_inverted)@mu\n",[m
+[31m-    "    C = (mu@sigma_inverted)@mu\n",[m
+[31m-    "    DELTA = A*C-B**2\n",[m
+[31m-    "\n",[m
+[31m-    "    w[date_number,0,:] = (sigma_inverted@(mu-rf))/(B-A*rf)\n",[m
+[31m-    "    w[date_number,1,:] = (sigma_inverted@one)/A\n",[m
+[31m-    "    tmp = 1/std\n",[m
+[31m-    "    w[date_number,2,:] = tmp/tmp.sum()\n",[m
+[31m-    "    w[date_number,3,:] = np.ones(20)/20\n",[m
+[31m-    "    date_number=date_number+1"[m
+[31m-   ][m
+[31m-  },[m
+[31m-  {[m
+[31m-   "cell_type": "code",[m
+[31m-   "execution_count": 220,[m
+[31m-   "id": "0c72d01a",[m
+[31m-   "metadata": {[m
+[31m-    "scrolled": true[m
+[31m-   },[m
+[31m-   "outputs": [[m
+[31m-    {[m
+[31m-     "data": {[m
+[31m-      "text/plain": [[m
+[31m-       "(528, 20)"[m
+[31m-      ][m
+[31m-     },[m
+[31m-     "execution_count": 220,[m
+[31m-     "metadata": {},[m
+[31m-     "output_type": "execute_result"[m
+[31m-    }[m
+[31m-   ],[m
+[31m-   "source": [][m
+[31m-  },[m
+[31m-  {[m
+[31m-   "cell_type": "code",[m
+[31m-   "execution_count": null,[m
+[31m-   "id": "bc353044",[m
+[31m-   "metadata": {},[m
+[31m-   "outputs": [],[m
+[31m-   "source": [][m
+[31m-  },[m
+[31m-  {[m
+[31m-   "cell_type": "code",[m
+[31m-   "execution_count": null,[m
+[31m-   "id": "e39cad2c",[m
+[31m-   "metadata": {},[m
+[31m-   "outputs": [],[m
+[31m-   "source": [][m
+[31m-  },[m
+[31m-  {[m
+[31m-   "cell_type": "code",[m
+[31m-   "execution_count": null,[m
+[31m-   "id": "77a77367",[m
+[31m-   "metadata": {},[m
+[31m-   "outputs": [],[m
+[31m-   "source": [][m
+[31m-  }[m
+[31m- ],[m
+[31m- "metadata": {[m
+[31m-  "kernelspec": {[m
+[31m-   "display_name": "Python 3 (ipykernel)",[m
+[31m-   "language": "python",[m
+[31m-   "name": "python3"[m
+[31m-  },[m
+[31m-  "language_info": {[m
+[31m-   "codemirror_mode": {[m
+[31m-    "name": "ipython",[m
+[31m-    "version": 3[m
+[31m-   },[m
+[31m-   "file_extension": ".py",[m
+[31m-   "mimetype": "text/x-python",[m
+[31m-   "name": "python",[m
+[31m-   "nbconvert_exporter": "python",[m
+[31m-   "pygments_lexer": "ipython3",[m
+[31m-   "version": "3.8.12"[m
+[31m-  }[m
+[31m- },[m
+[31m- "nbformat": 4,[m
+[31m- "nbformat_minor": 5[m
+[31m-}[m
+[1mdiff --git a/Untitled Folder/data.csv b/Untitled Folder/data.csv[m
+[1mdeleted file mode 100644[m
+[1mindex b8e1afa..0000000[m
+[1m--- a/Untitled Folder/data.csv[m	
+[1m+++ /dev/null[m
+[36m@@ -1,529 +0,0 @@[m
+[31m-mcaldt;tmytm[m
+[31m-1978-01-31;5.9967208538158[m
+[31m-1978-02-28;6.0884251740265[m
+[31m-1978-03-31;6.4972253572089[m
+[31m-1978-04-28;6.0486483399274[m
+[31m-1978-05-31;6.5097372536433005[m
+[31m-1978-06-30;6.5595704755094[m
+[31m-1978-07-31;6.5170219181511[m
+[31m-1978-08-31;7.6013808131684[m
+[31m-1978-09-29;8.0193091667989[m
+[31m-1978-10-31;8.5363841008461[m
+[31m-1978-11-30;9.0628587330568[m
+[31m-1978-12-29;8.4280128146252[m
+[31m-1979-01-31;9.5219756131092[m
+[31m-1979-02-28;9.5424300332788[m
+[31m-1979-03-30;9.6421703239067[m
+[31m-1979-04-30;9.569337251154101[m
+[31m-1979-05-31;9.6869363073906[m
+[31m-1979-06-29;8.9901567043598[m
+[31m-1979-07-31;9.0981299697221[m
+[31m-1979-08-31;10.054020184712[m
+[31m-1979-09-28;10.279168062276[m
+[31m-1979-10-31;11.717011923041[m
+[31m-1979-11-30;10.90379884883[m
+[31m-1979-12-31;9.344482922687[m
+[31m-1980-01-31;11.721614020654[m
+[31m-1980-02-29;13.61636785656[m
+[31m-1980-03-31;15.050646803179[m
+[31m-1980-04-30;9.2379298527468[m
+[31m-1980-05-30;7.1820263316345[m
+[31m-1980-06-30;6.2010228155294005[m
+[31m-1980-07-31;7.4992604535221[m
+[31m-1980-08-29;9.2969461594551[m
+[31m-1980-09-30;10.794970512916[m
+[31m-1980-10-31;11.682503145726999[m
+[31m-1980-11-28;14.651751019378999[m
+[31m-198
